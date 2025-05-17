@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code - Menu Lounge</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F5F5F5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #8B0000;
+            margin-bottom: 20px;
+        }
+        
+        .qr-container {
+            margin: 30px 0;
+        }
+        
+        .qr-code {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            border: 10px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        p {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .url {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 20px 0;
+        }
+        
+        .download-btn {
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .download-btn:hover {
+            background-color: #6d0000;
+        }
+        
+        .logo {
+            max-width: 120px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="assets/images/logo.png" alt="Menu Lounge Logo" class="logo">
+        <h1>QR Code - Menu Digital</h1>
+        
+        <p>Escaneie o código QR abaixo para acessar o menu digital do Menu Lounge:</p>
+        
+        <div class="qr-container">
+            <img id="qrCode" class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://menu-gentleman.netlify.app/" alt="QR Code para Menu Digital">
+        </div>
+        
+        <div class="url">https://menu-gentleman.netlify.app/</div>
+        
+        <p>Compartilhe este QR code com seus clientes para facilitar o acesso ao menu digital.</p>
+        
+        <button id="downloadBtn" class="download-btn">Baixar QR Code</button>
+    </div>
+    
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            // URL do QR code
+            const qrCodeUrl = document.getElementById('qrCode').src;
+            
+            // Criar um link temporário
+            const link = document.createElement('a');
+            link.href = qrCodeUrl;
+            link.download = 'menu-lounge-qrcode.png';
+            
+            // Simular um clique no link
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>
