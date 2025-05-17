@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code para Impressão - Menu Lounge</title>
+    <style>
+        @media print {
+            @page {
+                size: A5;
+                margin: 0;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+        }
+        
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .print-container {
+            width: 148mm; /* A5 width */
+            height: 210mm; /* A5 height */
+            padding: 15mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+        }
+        
+        .border {
+            position: absolute;
+            top: 10mm;
+            left: 10mm;
+            right: 10mm;
+            bottom: 10mm;
+            border: 1px solid #8B0000;
+            border-radius: 5mm;
+            z-index: 0;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            color: #8B0000;
+            font-size: 24px;
+            margin: 10px 0;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #D4AF37;
+            font-size: 14px;
+            margin: 0 0 20px 0;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .qr-container {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+        }
+        
+        .instructions {
+            margin: 20px 0 10px 0;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .url {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            margin: 10px 0;
+            color: #333;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+        
+        .print-btn:hover {
+            background-color: #D4AF37;
+        }
+        
+        @media (max-width: 600px) {
+            .print-container {
+                width: 100%;
+                height: auto;
+                padding: 20px;
+            }
+            
+            .border {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button onclick="window.print()" class="print-btn no-print">Imprimir QR Code</button>
+    
+    <div class="print-container">
+        <div class="border"></div>
+        <div class="content">
+            <img src="assets/images/logo.png" alt="Menu Lounge Logo" class="logo">
+            <h1>MENU LOUNGE</h1>
+            <p class="subtitle">Sabores e experiências exclusivas</p>
+            
+            <p class="instructions">Escaneie o código QR para acessar o nosso menu digital:</p>
+            
+            <div class="qr-container">
+                <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://menu-gentleman.netlify.app/" alt="QR Code para Menu Digital">
+            </div>
+            
+            <div class="url">https://menu-gentleman.netlify.app/</div>
+            
+            <p class="footer">&copy; 2025 Menu Lounge. Todos os direitos reservados.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Verificar se o documento foi carregado em um dispositivo móvel
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.innerWidth < 600) {
+                alert('Para melhor qualidade de impressão, recomendamos abrir esta página em um computador.');
+            }
+        });
+    </script>
+</body>
+</html>
