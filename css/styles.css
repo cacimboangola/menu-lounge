@@ -1,10 +1,16 @@
 /* Body styles */
-body {
+html, body {
     background-color: #F5F5F5; /* Light off-white background */
     color: #000000; /* Black text */
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.02em;
     line-height: 1.6;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .dark body {
@@ -64,13 +70,16 @@ body {
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     position: relative;
     transform-origin: center bottom;
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 @media (min-width: 640px) {
     .menu-item {
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        margin-bottom: 0;
+        margin-bottom: 2.5rem;
     }
 }
 
@@ -83,6 +92,27 @@ body {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border-bottom-color: #8B0000; /* Change to dark red on hover */
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+#menu-content {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.menu-item-image img {
+    max-width: 100%;
+    height: auto;
 }
 
 .dark .menu-item:hover {
@@ -226,10 +256,17 @@ body {
 
 /* Subcategory navigation */
 .subcategory-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    padding-bottom: 0.5rem;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.subcategory-nav::-webkit-scrollbar {
+    display: none;
 }
 
 .subcategory-btn {
@@ -371,6 +408,8 @@ body {
         background-position: 1000px 0;
     }
 }
+
+/* Removido para evitar duplicação */
 
 .menu-item-skeleton {
     background-color: #ffffff;
