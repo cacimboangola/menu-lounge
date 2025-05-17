@@ -1,0 +1,77 @@
+{
+    "Cocktails": [
+      { "item": "Blue Lagoon", "preco_kz": 3500 },
+      { "item": "Caipirinha", "preco_kz": 3500 },
+      { "item": "Caipiroska", "preco_kz": 3500 },
+      { "item": "Caipirão", "preco_kz": 3500 },
+      { "item": "Caipiroska Cítrica", "preco_kz": 3500 },
+      { "item": "Caipirão Cítrico", "preco_kz": 3500 },
+      { "item": "Caipirão com Mel", "preco_kz": 3500 },
+      { "item": "Daiquiri", "preco_kz": 3500 },
+      { "item": "Espumante Tropical", "preco_kz": 4000 },
+      { "item": "Gentleman", "preco_kz": 4000 },
+      { "item": "Gin Tónico", "preco_kz": 4000 },
+      { "item": "Gin Gentleman", "preco_kz": 4500 },
+      { "item": "Gimlet", "preco_kz": 3500 },
+      { "item": "Ginger Mojito", "preco_kz": 4000 },
+      { "item": "Gin Laranja com Canela", "preco_kz": 4500 },
+      { "item": "Gin Tangerina", "preco_kz": 4500 },
+      { "item": "Gin Frutos Vermelhos", "preco_kz": 4500 },
+      { "item": "Gin Tropical", "preco_kz": 4500 },
+      { "item": "Long Island", "preco_kz": 4500 },
+      { "item": "Margarita", "preco_kz": 3500 },
+      { "item": "Mojito", "preco_kz": 3500 },
+      { "item": "Mojito Cítrico", "preco_kz": 3500 },
+      { "item": "Mojito Tropical", "preco_kz": 3500 },
+      { "item": "Negroni", "preco_kz": 4000 },
+      { "item": "Pink Lady", "preco_kz": 3500 },
+      { "item": "Piña Colada", "preco_kz": 4000 },
+      { "item": "Sex on the Beach", "preco_kz": 3500 },
+      { "item": "Tequila Sunrise", "preco_kz": 3500 }
+    ],
+    "Shots": [
+      { "item": "B52", "preco_kz": 2500 },
+      { "item": "Tequila", "preco_kz": 2500 },
+      { "item": "Tequila Fogo", "preco_kz": 2500 }
+    ],
+    "Whisky": [
+      { "item": "Johnnie Walker Red Label", "preco_kz": 2000 },
+      { "item": "Ballantine’s", "preco_kz": 2000 },
+      { "item": "Jameson", "preco_kz": 2000 },
+      { "item": "Grant’s", "preco_kz": 2000 },
+      { "item": "Passport", "preco_kz": 2000 },
+      { "item": "J&B", "preco_kz": 2000 }
+    ],
+    "Rum": [
+      { "item": "Havana Club 3 Anos", "preco_kz": 2000 },
+      { "item": "Havana Club 7 Anos", "preco_kz": 2500 },
+      { "item": "Pampero", "preco_kz": 2500 }
+    ],
+    "Gin": [
+      { "item": "Gordon’s", "preco_kz": 2500 },
+      { "item": "Beefeater", "preco_kz": 2500 },
+      { "item": "Tanqueray", "preco_kz": 3000 },
+      { "item": "Bombay Sapphire", "preco_kz": 3000 }
+    ],
+    "Vodka": [
+      { "item": "Absolut", "preco_kz": 2500 },
+      { "item": "Smirnoff", "preco_kz": 2500 },
+      { "item": "Zubrowka", "preco_kz": 2500 }
+    ],
+    "Licor": [
+      { "item": "Baileys", "preco_kz": 2500 },
+      { "item": "Amarula", "preco_kz": 2500 },
+      { "item": "Beirão", "preco_kz": 2500 },
+      { "item": "Disaronno", "preco_kz": 2500 },
+      { "item": "Frangélico", "preco_kz": 2500 },
+      { "item": "Jägermeister", "preco_kz": 2500 },
+      { "item": "Cointreau", "preco_kz": 2500 }
+    ],
+    "Digestivos": [
+      { "item": "Macieira", "preco_kz": 2500 },
+      { "item": "Brandy Constantino", "preco_kz": 2500 },
+      { "item": "Licor Beirão", "preco_kz": 2500 },
+      { "item": "Aguardente Bagaceira", "preco_kz": 2500 }
+    ]
+  }
+  

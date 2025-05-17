@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-AO" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Lounge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B0000',       /* Dark red from menu */
+                        secondary: '#000000',     /* Black from menu */
+                        accent: '#D4AF37',       /* Gold accent from menu */
+                        dark: '#0F0F0F',         /* Almost black for dark mode */
+                        light: '#F5F5F5',        /* Off-white for light mode */
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'Georgia', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="min-h-screen font-sans">
+    <!-- Hero Section with Logo -->
+    <div class="relative bg-gradient-to-b from-black to-primary h-[40vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 text-center">
+            <img src="assets/images/logo.png" alt="Menu Lounge Logo" class="h-32 mx-auto mb-4">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-white mb-2">MENU LOUNGE</h1>
+            <p class="text-accent text-lg md:text-xl font-light tracking-widest">SABORES E EXPERIÊNCIAS EXCLUSIVAS</p>
+        </div>
+        <button id="themeToggle" class="absolute top-4 right-4 p-3 rounded-full bg-black bg-opacity-30 text-white hover:bg-opacity-50 transition-all focus:outline-none focus:ring-2 focus:ring-accent">
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:block"></i>
+        </button>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 -mt-10 relative z-20">
+        <!-- Menu Navigation -->
+        <div class="bg-white dark:bg-dark shadow-xl rounded-xl p-4 sm:p-6 mb-8">
+            <div class="flex flex-col gap-4 mb-6">
+                <!-- Category Navigation -->
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
+                    <button class="category-btn active" data-category="comida">
+                        <i class="fas fa-utensils mr-1 sm:mr-2"></i> Comidas
+                    </button>
+                    <button class="category-btn" data-category="bebida">
+                        <i class="fas fa-cocktail mr-1 sm:mr-2"></i> Bebidas
+                    </button>
+                    <button id="view-original-menu" class="view-original-btn ml-2 sm:ml-4">
+                        <i class="fas fa-book-open mr-1 sm:mr-2"></i> Menu Original
+                    </button>
+                </div>
+                <!-- Search -->
+                <div class="mb-6 sm:mb-8 max-w-2xl mx-auto w-full">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-gray-400 dark:text-gray-500"></i>
+                        </div>
+                        <input type="text" id="search-input" placeholder="Buscar no menu..." class="search-input">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                            <span class="hidden sm:inline-block text-xs text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full">Digite para buscar</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Subcategory Navigation -->
+                <div id="subcategoryNav" class="flex flex-wrap justify-center gap-1 sm:gap-2 mb-4 subcategory-nav overflow-x-auto py-2">
+                    <!-- Subcategories will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Content -->
+        <div id="menu-content" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            <!-- Loading placeholders -->
+            <div class="menu-item-skeleton">
+                <div class="skeleton-image"></div>
+                <div class="skeleton-content">
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-price"></div>
+                    <div class="skeleton-description"></div>
+                    <div class="skeleton-description"></div>
+                </div>
+            </div>
+            <div class="menu-item-skeleton">
+                <div class="skeleton-image"></div>
+                <div class="skeleton-content">
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-price"></div>
+                    <div class="skeleton-description"></div>
+                    <div class="skeleton-description"></div>
+                </div>
+            </div>
+            <div class="menu-item-skeleton">
+                <div class="skeleton-image"></div>
+                <div class="skeleton-content">
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-price"></div>
+                    <div class="skeleton-description"></div>
+                    <div class="skeleton-description"></div>
+                </div>
+            </div>
+            <!-- Menu items will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Original Menu Modal -->
+    <div id="menuModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden transition-opacity duration-300">
+        <div class="relative bg-white dark:bg-dark rounded-lg max-w-5xl max-h-[90vh] overflow-auto p-4 shadow-2xl transition-all duration-300 transform">
+            <div class="flex justify-between items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                <h2 class="text-2xl font-serif font-bold text-primary dark:text-accent">Menu Original</h2>
+                <button id="closeModalBtn" class="w-10 h-10 flex items-center justify-center rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-70 transition-all focus:outline-none focus:ring-2 focus:ring-accent">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="relative overflow-hidden rounded-lg">
+                <div class="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-800 opacity-0 transition-opacity duration-300" id="imageLoader">
+                    <i class="fas fa-spinner fa-spin text-4xl text-primary dark:text-accent"></i>
+                </div>
+                <img id="originalMenuImage" src="" alt="Menu Original" class="w-full h-auto rounded shadow-lg transition-opacity duration-300">
+            </div>
+            <div class="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
+                <p>Deslize para ver mais detalhes do menu</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-16 py-8 bg-dark text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="assets/images/logo.png" alt="Menu Lounge Logo" class="h-16 mb-2">
+                    <p class="text-accent text-sm">Sabores e experiências exclusivas</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <div class="flex justify-center md:justify-end space-x-4 mb-4">
+                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <p class="text-sm text-gray-400">&copy; 2025 Menu Lounge. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/menu-data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

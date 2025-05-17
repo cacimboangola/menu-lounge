@@ -1,0 +1,91 @@
+{
+    "Snacks": [
+      { "item": "Sandes Club com Frango", "preco_kz": 4500 },
+      { "item": "Sandes Pão de Forma", "preco_kz": 1500 },
+      { "item": "Tempura de Camarão", "preco_kz": 8000 },
+      { "item": "Tosta Mista", "preco_kz": 1500 },
+      { "item": "Sandes Mista", "preco_kz": 1500 },
+      { "item": "Ginguba", "preco_kz": 500 },
+      { "item": "Omelete Mista", "preco_kz": 3000 },
+      { "item": "Fajita de Carne / Frango", "preco_kz": 3500 },
+      { "item": "Asinhas BBQ", "preco_kz": 5500 },
+      { "item": "Pão de Alho", "preco_kz": 3200 },
+      { "item": "Camarões à La Guilho", "preco_kz": 7800 },
+      { "item": "Pica Pau à Gentleman", "preco_kz": 8000 },
+      { "item": "Prego no Pão à Gentleman", "preco_kz": 6000 },
+      { "item": "Sandes Club com Molho Pesto", "preco_kz": 6000 },
+      { "item": "Gentleman Burger", "preco_kz": 6000 },
+      { "item": "Hoco Frito", "preco_kz": 2500 },
+      { "item": "Tiras de Frango", "preco_kz": 5500 },
+      { "item": "Chouriço Assado", "preco_kz": 7500 }
+    ],
+    "Pratos da Casa": [
+      {
+        "item": "Grelhada Mista Terra (Individual)",
+        "preco_kz": 16500,
+        "descricao": "Bife de alcatra, entrecosto, coxa de frango, chouriço, arroz aromático, feijão preto, farofa, batata frita e ovo."
+      },
+      {
+        "item": "Grelhada Mista Terra (2 Pax)",
+        "preco_kz": 20500
+      },
+      {
+        "item": "Picanha na Chapa",
+        "preco_kz": 14500,
+        "descricao": "Bifas de picanha, arroz aromático, feijão preto, farofa, salada de tomate, molho e ovo."
+      },
+      {
+        "item": "Bife à The Gentleman",
+        "preco_kz": 12000,
+        "descricao": "Bife de vaca, ovo frito, batata-doce frita, salada de tomate e molho especial."
+      },
+      {
+        "item": "Massa de Camarão com Molho Bisque",
+        "preco_kz": 8000,
+        "descricao": "Massa esparguete, camarão, coentros, molho bisque."
+      },
+      {
+        "item": "Spaghetti à Carbonara",
+        "preco_kz": 9000,
+        "descricao": "Massa esparguete, bacon, ovo, queijo parmesão."
+      }
+    ],
+    "Guarnicoes": [
+      { "item": "Batata Frita (Doce / Rena)", "preco_kz": 1800 },
+      { "item": "Feijão Preto", "preco_kz": 1800 },
+      { "item": "Bacon", "preco_kz": 1000 },
+      { "item": "Queijo", "preco_kz": 1000 },
+      { "item": "Molho BBQ", "preco_kz": 1000 },
+      { "item": "Farofa", "preco_kz": 1000 },
+      { "item": "Arroz Aromático", "preco_kz": 1500 },
+      { "item": "Ovo", "preco_kz": 500 },
+      { "item": "Molho de Cocktail", "preco_kz": 1000 },
+      { "item": "Maionese", "preco_kz": 1000 },
+      { "item": "Ketchup", "preco_kz": 1000 },
+      { "item": "Molho Sweet Chilli", "preco_kz": 1000 },
+      { "item": "Salada de Tomate", "preco_kz": 1000 }
+    ],
+    "Sopas": [
+      { "item": "Sopa de Feijão", "preco_kz": 3000, "acompanha": "pão" },
+      { "item": "Sopa de Legumes", "preco_kz": 2500, "acompanha": "pão" }
+    ],
+    "Pequeno Almoco": [
+      { "item": "Sandes Mista", "preco_kz": 3800 },
+      { "item": "Omelete Mista", "preco_kz": 2500 },
+      { "item": "Croissant Misto", "preco_kz": 3800 },
+      { "item": "Croissant Simples", "preco_kz": 2500 },
+      { "item": "Croissant Misto", "preco_kz": 3000 },
+      {
+        "item": "Pequeno Matabicho",
+        "preco_kz": 5000,
+        "descricao": "Ovos estrelados, chouriço assado, bacon laminado, tomate assado, batata frita e torradas."
+      }
+    ],
+    "Extras": [
+      { "item": "Azeitona ao Alho", "preco_kz": 1000 },
+      { "item": "Molho Extra", "preco_kz": 1000 },
+      { "item": "Arroz Aromático", "preco_kz": 1500 },
+      { "item": "Take Away", "preco_kz": 500 }
+    ]
+  }
+  
