@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Lounge QR Colored</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            @page {
+                size: 90mm 90mm;
+                margin: 0;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+            
+            .print-card {
+                width: 90mm;
+                height: 90mm;
+            }
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+        }
+
+        .qr-card {
+            width: 90mm;
+            height: 90mm;
+            background: #d9c7a6; /* Cor de madeira clara mais próxima da imagem */
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .qr-code {
+            width: 55mm;
+            height: 55mm;
+            background-color: #f5e7d3; /* Fundo em tom de bege claro */
+            border: 1px solid #8B4513;
+        }
+        
+        .menu-text {
+            font-family: 'Arial Black', 'Arial', sans-serif;
+            font-weight: 900;
+            color: #222;
+            font-size: 24px;
+            letter-spacing: 1px;
+            margin-left: 2px;
+        }
+        
+        .table-text {
+            font-family: 'Arial Black', 'Arial', sans-serif;
+            font-weight: 900;
+            color: #222;
+            font-size: 18px;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            letter-spacing: 1px;
+            margin-right: 2px;
+        }
+        
+        /* Estilos para QR code colorido */
+        .colored-qr {
+            filter: sepia(20%) hue-rotate(350deg) saturate(80%);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="no-print flex gap-2 fixed top-4 left-4">
+        <a href="qr-exact1.html" class="bg-gray-800 text-white px-3 py-2 rounded text-sm font-bold">Modelo 1</a>
+        <a href="qr-exact2.html" class="bg-gray-800 text-white px-3 py-2 rounded text-sm font-bold">Modelo 2</a>
+        <a href="qr-exact3.html" class="bg-gray-800 text-white px-3 py-2 rounded text-sm font-bold">Modelo 3</a>
+        <a href="qr-exact4.html" class="bg-gray-800 text-white px-3 py-2 rounded text-sm font-bold">Modelo 4</a>
+        <a href="qr-card-tailwind.html" class="bg-gray-800 text-white px-3 py-2 rounded text-sm font-bold">Card</a>
+        <a href="qr-wooden.html" class="bg-gray-800 text-white px-3 py-2 rounded text-sm font-bold">Wooden</a>
+        <a href="qr-colored.html" class="bg-yellow-800 text-white px-3 py-2 rounded text-sm font-bold">Colored</a>
+        <a href="index.html" class="bg-gray-700 text-white px-3 py-2 rounded text-sm font-bold">Menu</a>
+    </div>
+    
+    <button onclick="window.print()" class="no-print bg-yellow-800 hover:bg-yellow-700 text-white px-4 py-2 rounded font-bold fixed top-4 right-4">
+        Imprimir
+    </button>
+
+    <!-- QR Code Card -->
+    <div class="qr-card print-card">
+        <div class="flex flex-col h-full p-4">
+            <!-- Top section -->
+            <div class="flex justify-between items-start mb-3">
+                <div class="menu-text text-2xl font-black">MENU</div>
+                <div></div> <!-- Espaço vazio para manter o layout -->
+            </div>
+            
+            <!-- Middle section with QR code -->
+            <div class="flex">
+                <!-- QR code on left -->
+                <div class="qr-code">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=0&data=https://menu-gentleman.netlify.app/&bgcolor=f5e7d3&color=8B4513" 
+                         alt="Menu QR Code" class="w-full h-full colored-qr">
+                </div>
+                
+                <!-- Right side with TABLE text -->
+                <div class="ml-4 flex items-center">
+                    <div class="table-text">TABLE 203</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-8 no-print">
+        <p class="text-white text-center text-sm">Tamanho para impressão: 90mm x 90mm (quadrado)</p>
+        <p class="text-white text-center text-sm mt-2">Nota: QR codes coloridos podem ter menor taxa de leitura em alguns dispositivos</p>
+    </div>
+</body>
+
+</html>

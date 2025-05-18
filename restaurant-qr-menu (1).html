@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant QR Menu Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+        }
+
+        .qr-card {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('/api/placeholder/640/480') center/cover no-repeat;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-4">
+    <!-- QR Code Card Only -->
+    <div class="qr-card rounded-lg shadow-2xl p-6 w-full max-w-md">
+        <div class="bg-white bg-opacity-95 rounded-lg shadow-lg flex overflow-hidden">
+            <!-- Left Side - Logo -->
+            <div class="w-1/3 bg-gray-100 p-4 flex items-center justify-center">
+                <div
+                    class="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 text-xs text-center">
+                    <img src="assets/images/logo.png" alt="">
+                </div>
+            </div>
+
+            <!-- Right Side - QR Code (Replace this div with your QR code) -->
+            <div class="w-2/3 p-4 flex flex-col items-center">
+                <div class="border-2 border-green-700 p-2 rounded-md mb-2" id="qr-code-container">
+                    <!-- QR Code Placeholder - Replace this with your QR code image -->
+                    <div class="w-24 h-24 bg-white flex items-center justify-center">
+                        <img src="assets/images/qrcode.png" alt="" srcset="">
+                        <!-- Replace this comment with: <img src="your-qr-code.png" alt="Menu QR Code" class="w-full h-full"> -->
+                    </div>
+                </div>
+                <h3 class="text-green-700 font-bold text-lg">Welcome!</h3>
+                <p class="text-gray-600 text-sm text-center">Our menu on<br>your smartphone</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

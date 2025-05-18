@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Lounge QR Card - Fundo Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B0000',
+                        accent: '#D4AF37',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media print {
+            @page {
+                size: 85mm 55mm;
+                margin: 0;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+            
+            .print-card {
+                width: 85mm;
+                height: 55mm;
+            }
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            background-color: #0a0a0a;
+        }
+
+        .qr-card {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('assets/images/menu loungue comidas.jpg') center/cover no-repeat;
+            width: 85mm;
+            height: 55mm;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="no-print flex gap-2 fixed top-4 left-4">
+        <a href="qr-exact1.html" class="bg-primary text-white px-3 py-2 rounded text-sm font-bold">Modelo 1</a>
+        <a href="qr-exact2.html" class="bg-primary text-white px-3 py-2 rounded text-sm font-bold">Modelo 2</a>
+        <a href="qr-exact3.html" class="bg-primary text-white px-3 py-2 rounded text-sm font-bold">Modelo 3</a>
+        <a href="qr-exact4.html" class="bg-primary text-white px-3 py-2 rounded text-sm font-bold">Modelo 4</a>
+        <a href="qr-card-tailwind.html" class="bg-primary text-white px-3 py-2 rounded text-sm font-bold">Card</a>
+        <a href="qr-card-menu-bg.html" class="bg-accent text-black px-3 py-2 rounded text-sm font-bold">Menu BG</a>
+        <a href="index.html" class="bg-gray-700 text-white px-3 py-2 rounded text-sm font-bold">Menu</a>
+    </div>
+    
+    <button onclick="window.print()" class="no-print bg-primary hover:bg-accent text-white px-4 py-2 rounded font-bold fixed top-4 right-4">
+        Imprimir
+    </button>
+
+    <!-- QR Code Card -->
+    <div class="qr-card rounded-lg shadow-2xl flex items-center justify-center print-card">
+        <div class="bg-black bg-opacity-70 p-4 rounded-lg flex items-center">
+            <!-- Logo -->
+            <div class="mr-4">
+                <div class="w-16 h-16 rounded-full bg-white p-1 flex items-center justify-center">
+                    <img src="assets/images/logo.png" alt="Menu Lounge Logo" class="w-14 h-14 object-contain">
+                </div>
+            </div>
+
+            <!-- QR Code -->
+            <div class="flex flex-col items-center">
+                <div class="border-2 border-accent p-1 rounded-md mb-2 bg-white">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://menu-gentleman.netlify.app/" 
+                         alt="Menu QR Code" class="w-24 h-24">
+                </div>
+                <h3 class="text-accent font-bold text-sm">MENU DIGITAL</h3>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-8 no-print">
+        <p class="text-white text-center text-sm">Tamanho para impressão: 85mm x 55mm (cartão de visita)</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação QR Codes - Menu Lounge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/3b0b1495c5.js" crossorigin="anonymous"></script>
+    <style>
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .slide {
+                page-break-after: always;
+                border-radius: 0;
+                box-shadow: none;
+                margin-bottom: 0;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .slide {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slide-header {
+            background: linear-gradient(135deg, #8B0000 0%, #5a0000 100%);
+            color: white;
+            padding: 20px 25px;
+            position: relative;
+        }
+        
+        .slide-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #D4AF37);
+        }
+        
+        .slide-content {
+            padding: 30px;
+        }
+        
+        .benefit-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #8B0000;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .benefit-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .benefit-card::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #8B0000;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .qr-example {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .qr-example:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .highlight {
+            color: #8B0000;
+            font-weight: 700;
+        }
+        
+        .gold-text {
+            color: #D4AF37;
+            font-weight: 700;
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, #8B0000 0%, #5a0000 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+            box-shadow: 0 4px 10px rgba(139, 0, 0, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #8B0000 0%, #5a0000 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #8B0000, #D4AF37);
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #8B0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body class="p-4 md:p-8">
+    <button onclick="window.print()" class="print-btn no-print">Gerar PDF <i class="fas fa-file-pdf ml-2"></i></button>
+    
+    <header class="mb-12 text-center animate__animated animate__fadeIn">
+        <h1 class="text-4xl font-bold text-gray-800 mb-3">Proposta de QR Codes Personalizados</h1>
+        <p class="text-xl text-gray-600">Menu Digital <span class="gold-text">Gentleman Lounge</span></p>
+        <div class="mt-4 flex justify-center">
+            <div class="h-1 w-24 bg-gradient-to-r from-red-800 to-yellow-600 rounded-full"></div>
+        </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Slide 1: Introdução -->
+        <div class="slide animate__animated animate__fadeInUp">
+            <div class="slide-header">
+                <h2 class="text-2xl font-bold">Modernizando a Experiência do Cliente</h2>
+            </div>
+            <div class="slide-content">
+                <div class="flex items-center justify-center mb-6">
+                    <img src="assets/images/logo.png" alt="Gentleman Lounge Logo" class="h-16 mr-4">
+                    <div class="h-12 w-px bg-gray-300 mx-4"></div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Proposta Exclusiva</h3>
+                        <p class="text-gray-600">Maio 2025</p>
+                    </div>
+                </div>
+                
+                <p class="mb-4 text-lg">Prezado gestor do <span class="gold-text">Gentleman Lounge</span>,</p>
+                
+                <p class="mb-6 leading-relaxed">Apresentamos uma proposta para implementar QR codes personalizados que permitirão aos clientes acessar facilmente o menu digital do estabelecimento. Esta solução combina <span class="highlight">tecnologia moderna</span> com a <span class="highlight">estética sofisticada</span> que caracteriza o Gentleman Lounge.</p>
+                
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div class="feature-icon">
+                            <i class="fas fa-qrcode text-white text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Fácil Acesso</h3>
+                        <p class="text-gray-600">Sem necessidade de aplicativos ou downloads. Basta escanear e visualizar.</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div class="feature-icon">
+                            <i class="fas fa-paint-brush text-white text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Design Exclusivo</h3>
+                        <p class="text-gray-600">Personalizado com a identidade visual do Gentleman Lounge.</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div class="feature-icon">
+                            <i class="fas fa-coins text-white text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Economia</h3>
+                        <p class="text-gray-600">Redução significativa nos custos de impressão e atualização de menus.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <a href="#beneficios" class="btn-primary">Ver Benefícios Detalhados <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Benefícios -->
+        <div id="beneficios" class="slide animate__animated animate__fadeInUp">
+            <div class="slide-header">
+                <h2 class="text-2xl font-bold">Benefícios para o Negócio</h2>
+            </div>
+            <div class="slide-content">
+                <div class="mb-8">
+                    <h3 class="section-title text-xl">Por que implementar QR codes personalizados?</h3>
+                    <p class="text-gray-700 mb-6">A implementação de QR codes personalizados traz diversos benefícios tangíveis para o Gentleman Lounge, impactando positivamente tanto a experiência do cliente quanto os resultados do negócio.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="benefit-card transform hover:scale-102 transition-all duration-300">
+                        <h3 class="font-bold mb-2 flex items-center">
+                            <i class="fas fa-star text-yellow-600 mr-2"></i>
+                            Experiência do Cliente Aprimorada
+                        </h3>
+                        <p class="text-gray-700">Os clientes podem acessar facilmente o menu digital através de seus smartphones, visualizando fotos dos pratos, descrições detalhadas e preços atualizados.</p>
+                    </div>
+                    
+                    <div class="benefit-card transform hover:scale-102 transition-all duration-300">
+                        <h3 class="font-bold mb-2 flex items-center">
+                            <i class="fas fa-sync-alt text-green-600 mr-2"></i>
+                            Atualizações em Tempo Real
+                        </h3>
+                        <p class="text-gray-700">Alterações no menu, promoções especiais ou novos itens podem ser atualizados instantaneamente, sem a necessidade de reimprimir menus físicos.</p>
+                    </div>
+                    
+                    <div class="benefit-card transform hover:scale-102 transition-all duration-300">
+                        <h3 class="font-bold mb-2 flex items-center">
+                            <i class="fas fa-hand-holding-usd text-blue-600 mr-2"></i>
+                            Redução de Custos
+                        </h3>
+                        <p class="text-gray-700">Economia significativa com a redução da necessidade de impressão frequente de menus físicos, especialmente quando há mudanças de preços ou itens.</p>
+                    </div>
+                    
+                    <div class="benefit-card transform hover:scale-102 transition-all duration-300">
+                        <h3 class="font-bold mb-2 flex items-center">
+                            <i class="fas fa-rocket text-purple-600 mr-2"></i>
+                            Imagem Moderna e Inovadora
+                        </h3>
+                        <p class="text-gray-700">Demonstra que o estabelecimento está alinhado com as tendências tecnológicas, transmitindo uma imagem de inovação aos clientes.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-green-600">
+                    <h3 class="font-bold mb-2 flex items-center text-green-700">
+                        <i class="fas fa-leaf mr-2"></i>
+                        Sustentabilidade
+                    </h3>
+                    <p class="text-gray-700">Redução do uso de papel, alinhando-se a práticas mais sustentáveis e ecologicamente responsáveis. Estudos mostram que empresas com práticas sustentáveis são vistas de forma mais positiva por 78% dos consumidores.</p>
+                </div>
+                
+                <div class="mt-8 flex justify-center">
+                    <div class="bg-gray-100 rounded-lg p-4 inline-flex items-center">
+                        <i class="fas fa-chart-line text-2xl text-red-800 mr-3"></i>
+                        <p class="text-gray-800"><span class="font-bold">Retorno sobre investimento estimado:</span> Economia de até <span class="highlight">70%</span> nos custos de impressão de menu em apenas 3 meses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Exemplos de Design -->
+        <div class="slide animate__animated animate__fadeInUp">
+            <div class="slide-header">
+                <h2 class="text-2xl font-bold">Opções de Design Personalizadas</h2>
+            </div>
+            <div class="slide-content">
+                <h3 class="section-title text-xl mb-6">QR Codes Exclusivos para o Gentleman Lounge</h3>
+                <p class="mb-6 text-gray-700">Desenvolvemos várias opções de design para os QR codes, todas alinhadas com a identidade visual do Gentleman Lounge. Cada design foi cuidadosamente elaborado para combinar com a estética sofisticada do estabelecimento:</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                        <div class="qr-example mb-4 flex justify-center">
+                            <img src="assets/qr-codes/qr-wooden.png" alt="QR Code Wooden" class="w-48 h-48 object-contain">
+                        </div>
+                        <h3 class="font-bold text-center text-lg mb-2">Design Madeira</h3>
+                        <p class="text-gray-600 text-center">Elegante e rústico, com fundo em tom de madeira e código preto. Combina perfeitamente com a decoração em madeira do ambiente.</p>
+                        <div class="mt-4 text-center">
+                            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-semibold">Recomendado para mesas</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                        <div class="qr-example mb-4 flex justify-center">
+                            <img src="assets/qr-codes/qr-classic.png" alt="QR Code Clássico" class="w-48 h-48 object-contain">
+                        </div>
+                        <h3 class="font-bold text-center text-lg mb-2">Design Clássico</h3>
+                        <p class="text-gray-600 text-center">Visual tradicional com código em vermelho escuro sobre fundo branco, mantendo as cores do estabelecimento.</p>
+                        <div class="mt-4 text-center">
+                            <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-semibold">Alta legibilidade</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                        <div class="qr-example mb-4 flex justify-center">
+                            <img src="assets/qr-codes/qr-beige.png" alt="QR Code Bege" class="w-48 h-48 object-contain">
+                        </div>
+                        <h3 class="font-bold text-center text-lg mb-2">Design Suave</h3>
+                        <p class="text-gray-600 text-center">Visual elegante com fundo bege claro e código em marrom, criando uma aparência sofisticada e aconchegante.</p>
+                        <div class="mt-4 text-center">
+                            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs font-semibold">Ideal para cardápios</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                        <div class="qr-example mb-4 flex justify-center">
+                            <img src="assets/qr-codes/qr-gold.png" alt="QR Code Premium" class="w-48 h-48 object-contain">
+                        </div>
+                        <h3 class="font-bold text-center text-lg mb-2">Design Premium</h3>
+                        <p class="text-gray-600 text-center">Visual sofisticado com fundo escuro e código dourado, transmitindo exclusividade e luxo.</p>
+                        <div class="mt-4 text-center">
+                            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-semibold">Ideal para área VIP</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-gray-100 p-6 rounded-xl">
+                    <h3 class="font-bold mb-3 flex items-center">
+                        <i class="fas fa-palette text-purple-600 mr-2"></i>
+                        Personalização Completa
+                    </h3>
+                    <p class="text-gray-700">Todos os designs são totalmente personalizáveis e podem ser adaptados conforme as preferências específicas do Gentleman Lounge. Podemos ajustar cores, tamanhos, formatos e até mesmo adicionar elementos decorativos exclusivos.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Implementação -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="text-xl font-bold">Implementação Simples e Rápida</h2>
+            </div>
+            <div class="slide-content">
+                <div class="mb-6">
+                    <h3 class="font-bold mb-2">Processo de Implementação:</h3>
+                    <ol class="list-decimal pl-5 space-y-2">
+                        <li>Seleção do design preferido para os QR codes</li>
+                        <li>Personalização com cores, logo e informações específicas do Gentleman Lounge</li>
+                        <li>Impressão dos QR codes em material durável (acrílico, madeira ou cartão premium)</li>
+                        <li>Colocação estratégica nas mesas e áreas de espera</li>
+                        <li>Treinamento rápido da equipe para orientar os clientes, se necessário</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-gray-100 p-4 rounded-lg">
+                    <h3 class="font-bold mb-2">Tempo de Implementação:</h3>
+                    <p>Todo o processo pode ser concluído em <span class="highlight">apenas 2 dias úteis</span>, com custo mínimo e sem interrupção das operações do estabelecimento.</p>
+                </div>
+                
+                <div class="mt-6">
+                    <h3 class="font-bold mb-2">Suporte Contínuo:</h3>
+                    <p>Oferecemos suporte técnico para garantir que o sistema funcione perfeitamente e para implementar quaisquer atualizações ou modificações necessárias no futuro.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Conclusão e Próximos Passos -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="text-xl font-bold">Conclusão e Próximos Passos</h2>
+            </div>
+            <div class="slide-content">
+                <p class="mb-4">A implementação de QR codes personalizados para acesso ao menu digital representa uma oportunidade para o Gentleman Lounge:</p>
+                
+                <ul class="list-disc pl-5 mb-6 space-y-2">
+                    <li>Modernizar a experiência do cliente</li>
+                    <li>Reduzir custos operacionais</li>
+                    <li>Alinhar-se com práticas sustentáveis</li>
+                    <li>Destacar-se da concorrência com uma solução tecnológica elegante</li>
+                    <li>Facilitar atualizações frequentes do menu</li>
+                </ul>
+                
+                <div class="bg-gray-100 p-4 rounded-lg mb-6">
+                    <h3 class="font-bold mb-2">Investimento:</h3>
+                    <p>O investimento para implementação é mínimo comparado aos benefícios a longo prazo, com retorno estimado em economia de impressão em apenas alguns meses.</p>
+                </div>
+                
+                <div class="bg-gray-800 text-white p-4 rounded-lg">
+                    <h3 class="font-bold mb-2">Próximos Passos:</h3>
+                    <ol class="list-decimal pl-5 space-y-1">
+                        <li>Agendar uma demonstração ao vivo dos QR codes em funcionamento</li>
+                        <li>Selecionar o design preferido entre as opções apresentadas</li>
+                        <li>Definir quantidade e locais para implementação</li>
+                        <li>Aprovar orçamento final</li>
+                        <li>Iniciar produção e implementação</li>
+                    </ol>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <p class="font-bold text-lg">Estamos à disposição para esclarecer quaisquer dúvidas e avançar com este projeto inovador.</p>
+                    <p class="text-gray-600 mt-2">Obrigado pela atenção e consideração.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-8 text-center text-gray-600 text-sm">
+        <p>Proposta desenvolvida para o Gentleman Lounge - 2025</p>
+    </footer>
+</body>
+
+</html>

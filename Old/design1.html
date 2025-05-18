@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 1 - Menu Lounge</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .card {
+            width: 100%;
+            max-width: 400px;
+            background-color: #0F0F0F;
+            color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .card-header {
+            padding: 20px;
+            background-color: #8B0000;
+            text-align: center;
+        }
+        
+        .card-header h1 {
+            margin: 0;
+            color: #D4AF37;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .card-body {
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        
+        .instructions {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #D4AF37;
+        }
+        
+        .url {
+            font-family: monospace;
+            background-color: #1f2937;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            color: #D4AF37;
+            font-size: 14px;
+            word-break: break-all;
+        }
+        
+        .footer {
+            padding: 15px;
+            background-color: #1f2937;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .nav-buttons {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .nav-btn:hover {
+            background-color: #D4AF37;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-buttons">
+        <a href="design1.html" class="nav-btn">Design 1</a>
+        <a href="design2.html" class="nav-btn">Design 2</a>
+        <a href="design3.html" class="nav-btn">Design 3</a>
+        <a href="design4.html" class="nav-btn">Design 4</a>
+        <a href="index.html" class="nav-btn">Menu</a>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            <h1>MENU LOUNGE</h1>
+        </div>
+        <div class="card-body">
+            <img src="assets/images/logo.png" alt="Menu Lounge Logo" class="logo">
+            
+            <p class="instructions">Escaneie o código QR para acessar o nosso menu digital:</p>
+            
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://menu-gentleman.netlify.app/" alt="QR Code para Menu Digital" width="100%" height="100%">
+            </div>
+            
+            <div class="url">https://menu-gentleman.netlify.app/</div>
+        </div>
+        <div class="footer">
+            &copy; 2025 Menu Lounge. Todos os direitos reservados.
+        </div>
+    </div>
+</body>
+</html>
