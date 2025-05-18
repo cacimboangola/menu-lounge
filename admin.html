@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Lounge - Painel de Administração</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B0000;
+            --primary-dark: #5a0000;
+            --accent: #D4AF37;
+            --dark: #1f2937;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            padding-top: 56px;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .navbar-brand span {
+            color: var(--accent);
+        }
+        
+        .sidebar {
+            background-color: var(--dark);
+            color: white;
+            min-height: calc(100vh - 56px);
+            padding-top: 20px;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            border-left: 3px solid transparent;
+            padding: 10px 15px;
+            margin-bottom: 5px;
+        }
+        
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent);
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .content-header {
+            background-color: white;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .content-header h1 {
+            font-size: 24px;
+            margin: 0;
+            color: var(--dark);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+            padding: 15px 20px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            background-color: #c09c30;
+            border-color: #c09c30;
+            color: white;
+        }
+        
+        .table th {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .badge-category {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .badge-subcategory {
+            background-color: var(--accent);
+            color: white;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .preview-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-logo img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+        
+        .login-title {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(139, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <!-- Título da página -->
+    <div style="display: none;">
+        <!-- Mantido para compatibilidade, mas não visível -->
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt="Logo" style="height: 30px; margin-right: 10px; display: none;">Menu <span>Lounge</span> Admin</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home"></i> Voltar ao Menu
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-section="dashboard">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="comidas">
+                                <i class="fas fa-utensils"></i> Comidas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="bebidas">
+                                <i class="fas fa-cocktail"></i> Bebidas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="categorias">
+                                <i class="fas fa-tags"></i> Categorias
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="configuracoes">
+                                <i class="fas fa-cog"></i> Configurações
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Main Content -->
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                    <!-- Dashboard Section -->
+                    <section id="dashboard-section" class="content-section">
+                        <div class="content-header d-flex justify-content-between align-items-center">
+                            <h1>Dashboard</h1>
+                            <button class="btn btn-primary" id="save-all-data">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Total de Comidas</h5>
+                                        <p class="display-4" id="total-comidas">0</p>
+                                        <p class="text-muted">Itens no cardápio</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Total de Bebidas</h5>
+                                        <p class="display-4" id="total-bebidas">0</p>
+                                        <p class="text-muted">Itens no cardápio</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Categorias</h5>
+                                        <p class="display-4" id="total-categorias">0</p>
+                                        <p class="text-muted">Categorias ativas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Últimas Comidas Adicionadas
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group" id="recent-comidas">
+                                            <!-- Will be populated by JavaScript -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Últimas Bebidas Adicionadas
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group" id="recent-bebidas">
+                                            <!-- Will be populated by JavaScript -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Comidas Section -->
+                    <section id="comidas-section" class="content-section" style="display: none;">
+                        <div class="content-header d-flex justify-content-between align-items-center">
+                            <h1>Gerenciar Comidas</h1>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal" data-category="comidas">
+                                <i class="fas fa-plus"></i> Adicionar Comida
+                            </button>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Imagem</th>
+                                                <th>Nome</th>
+                                                <th>Categoria</th>
+                                                <th>Preço</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="comidas-table">
+                                            <!-- Will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Bebidas Section -->
+                    <section id="bebidas-section" class="content-section" style="display: none;">
+                        <div class="content-header d-flex justify-content-between align-items-center">
+                            <h1>Gerenciar Bebidas</h1>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal" data-category="bebidas">
+                                <i class="fas fa-plus"></i> Adicionar Bebida
+                            </button>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Imagem</th>
+                                                <th>Nome</th>
+                                                <th>Categoria</th>
+                                                <th>Preço</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="bebidas-table">
+                                            <!-- Will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Categorias Section -->
+                    <section id="categorias-section" class="content-section" style="display: none;">
+                        <div class="content-header d-flex justify-content-between align-items-center">
+                            <h1>Gerenciar Categorias</h1>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                                <i class="fas fa-plus"></i> Adicionar Categoria
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Categorias de Comidas
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group" id="comidas-categories">
+                                            <!-- Will be populated by JavaScript -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Categorias de Bebidas
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group" id="bebidas-categories">
+                                            <!-- Will be populated by JavaScript -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Configurações Section -->
+                    <section id="configuracoes-section" class="content-section" style="display: none;">
+                        <div class="content-header">
+                            <h1>Configurações</h1>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                Configurações Gerais
+                            </div>
+                            <div class="card-body">
+                                <form id="settings-form">
+                                    <div class="mb-3">
+                                        <label for="restaurant-name" class="form-label">Nome do Restaurante</label>
+                                        <input type="text" class="form-control" id="restaurant-name" value="Menu Lounge">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="restaurant-address" class="form-label">Endereço</label>
+                                        <input type="text" class="form-control" id="restaurant-address" value="Luanda, Angola">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="restaurant-phone" class="form-label">Telefone</label>
+                                        <input type="text" class="form-control" id="restaurant-phone" value="+244 123 456 789">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="currency" class="form-label">Moeda</label>
+                                        <select class="form-select" id="currency">
+                                            <option value="Kz" selected>Kwanza (Kz)</option>
+                                            <option value="$">Dólar ($)</option>
+                                            <option value="€">Euro (€)</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Salvar Configurações</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                Exportar/Importar Dados
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex gap-3">
+                                    <button class="btn btn-primary" id="export-data">
+                                        <i class="fas fa-download"></i> Exportar Dados
+                                    </button>
+                                    <button class="btn btn-outline-primary" id="import-data">
+                                        <i class="fas fa-upload"></i> Importar Dados
+                                    </button>
+                                    <input type="file" id="import-file" accept=".json" style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Item Modal -->
+    <div class="modal fade" id="addItemModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="itemModalTitle">Adicionar Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="item-form">
+                        <input type="hidden" id="item-id">
+                        <input type="hidden" id="item-category">
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="item-name" class="form-label">Nome do Item</label>
+                                <input type="text" class="form-control" id="item-name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="item-price" class="form-label">Preço (Kz)</label>
+                                <input type="number" class="form-control" id="item-price" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="item-subcategory" class="form-label">Subcategoria</label>
+                            <select class="form-select" id="item-subcategory" required>
+                                <!-- Will be populated by JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="item-description" class="form-label">Descrição (opcional)</label>
+                            <textarea class="form-control" id="item-description" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="item-image" class="form-label">Imagem</label>
+                            <input type="file" class="form-control" id="item-image" accept="image/*">
+                            <div class="mt-2" id="image-preview-container" style="display: none;">
+                                <img id="image-preview" src="" alt="Preview" class="img-thumbnail" style="max-height: 150px;">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="save-item">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Category Modal -->
+    <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar Categoria</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="category-form">
+                        <div class="mb-3">
+                            <label for="category-type" class="form-label">Tipo</label>
+                            <select class="form-select" id="category-type" required>
+                                <option value="comidas">Comidas</option>
+                                <option value="bebidas">Bebidas</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="category-name" class="form-label">Nome da Categoria</label>
+                            <input type="text" class="form-control" id="category-name" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="save-category">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmação</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmation-message">Tem certeza que deseja realizar esta ação?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirm-action">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

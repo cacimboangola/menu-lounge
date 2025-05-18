@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Codes Menu Lounge - Impressão</title>
+    <style>
+        @page {
+            size: 85mm 55mm;
+            margin: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .print-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .qr-card {
+            width: 85mm;
+            height: 55mm;
+            margin-bottom: 20px;
+            page-break-after: always;
+            page-break-inside: avoid;
+            position: relative;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+        }
+        
+        .logo-side {
+            background-color: #000;
+            background-image: url('assets/images/IMG-20250517-WA0087.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .logo-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .logo-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: rgba(128, 128, 128, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        
+        .logo-inner-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .qr-side {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+        
+        .qr-container {
+            border: 2px solid #8B0000;
+            padding: 8px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        
+        .qr-img {
+            width: 80px;
+            height: 80px;
+        }
+        
+        .qr-title {
+            color: #8B0000;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .qr-subtitle {
+            color: #666;
+            font-size: 12px;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .table-number {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-25%, -50%);
+            z-index: 10;
+            width: 50px;
+            height: 40px;
+            background-color: #8B0000;
+            color: white;
+            font-weight: 900;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            border: 1px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .btn:hover {
+            background-color: #6a0000;
+        }
+        
+        @media print {
+            .controls {
+                display: none;
+            }
+            
+            .print-container {
+                padding: 0;
+            }
+            
+            .qr-card {
+                box-shadow: none;
+                margin-bottom: 0;
+                border-radius: 0;
+            }
+            
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            body {
+                background-color: white !important;
+            }
+            
+            .logo-side {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h1>QR Codes Menu Lounge</h1>
+        <p>Clique no botão abaixo para imprimir todos os QR codes (mesas 1-23)</p>
+        <button class="btn" onclick="window.print()">Imprimir Todos</button>
+        <a href="qr-card-tailwind.html" class="btn" style="text-decoration: none; display: inline-block; background-color: #333;">Voltar</a>
+    </div>
+    
+    <div class="print-container" id="print-container">
+        <!-- Os QR codes serão gerados aqui via JavaScript -->
+    </div>
+    
+    <script>
+        // Gerar QR codes para mesas 1-23
+        const container = document.getElementById('print-container');
+        
+        for (let i = 1; i <= 23; i++) {
+            const card = document.createElement('div');
+            card.className = 'qr-card';
+            
+            card.innerHTML = `
+                <div class="card-grid">
+                    <div class="logo-side">
+                        <div class="logo-content">
+                            <div class="logo-circle">
+                                <div class="logo-inner-circle">
+                                    <img src="assets/images/logo.png" alt="Menu Lounge Logo" class="logo-img">
+                                </div>
+                            </div>
+                            <div class="logo-text">MENU<br>LOUNGE</div>
+                        </div>
+                    </div>
+                    <div class="table-number" style="position: absolute; left: auto; right: 0; top: 50%; transform: translate(-50%, -50%);">${i}</div>
+                    <div class="qr-side">
+                        <div class="qr-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://menu-gentleman.netlify.app/" 
+                                 alt="Menu QR Code" class="qr-img">
+                        </div>
+                        <div class="qr-title">MENU DIGITAL</div>
+                        <div class="qr-subtitle">Escaneie para acessar<br>o cardápio</div>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(card);
+        }
+    </script>
+</body>
+</html>
